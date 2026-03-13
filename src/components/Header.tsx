@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Search, Phone, Star } from "lucide-react";
 import logoImage from "../assets/images/lg.png";
+import MegaMenu from "./MegaMenu";
+import { menuData } from "../data/menu";
 
 const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -23,7 +26,10 @@ const Header = () => {
   return (
     <header 
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => {
+    setIsHovered(false);
+    setActiveMenu(null);
+  }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all ${animTiming} ${
         isActive 
           ? "bg-white text-gray-800 shadow-md translate-y-0" 
@@ -72,8 +78,18 @@ const Header = () => {
 
           {/* LEFT MENU */}
           <div className="flex gap-8 font-medium">
-            <a href="#" className="hover:text-[#c29b7a] transition-colors duration-0">Nos destinations</a>
-            <a href="#" className="hover:text-[#c29b7a] transition-colors duration-0">Idées & inspirations</a>
+            <div
+              onMouseEnter={() => setActiveMenu("destinations")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+            >
+            Nos destinations
+          </div>
+            <div
+              onMouseEnter={() => setActiveMenu("inspirations")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+              >
+              Idées & inspirations
+            </div>
           </div>
 
           {/* LOGO */}
@@ -95,8 +111,18 @@ const Header = () => {
 
           {/* RIGHT MENU */}
           <div className="flex items-center gap-8 font-medium">
-            <a href="#" className="hover:text-[#c29b7a] transition-colors duration-0">Nos croisières</a>
-            <a href="#" className="hover:text-[#c29b7a] ">Qui sommes-nous ?</a>
+            <div
+              onMouseEnter={() => setActiveMenu("croisieres")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+            >
+              Nos croisières
+            </div>
+            <div
+              onMouseEnter={() => setActiveMenu("about")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+              >
+              Qui sommes-nous ?
+            </div>
 
             <button className="bg-[#5b6fcf] px-5 py-2 rounded-md font-semibold hover:bg-[#4659b8] text-white shadow-sm transition-all duration-300">
               Concevez votre voyage
@@ -105,6 +131,14 @@ const Header = () => {
 
         </div>
       </nav>
+
+      {/* MEGA MENU — single instance, never unmounted while hovering header */}
+      {activeMenu && (
+        <MegaMenu
+          activeKey={activeMenu}
+          {...menuData[activeMenu as keyof typeof menuData]}
+        />
+      )}
 
     </header>
   );
