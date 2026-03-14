@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Search, Phone, Star } from "lucide-react";
 import logoImage from "../assets/images/lg.png";
+import MegaMenu from "./MegaMenu";
+import { menuData } from "../data/menu";
 
 const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -21,15 +24,7 @@ const Header = () => {
     : "duration-500 ease-in-out";
 
   return (
-    <header 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all ${animTiming} ${
-        isActive 
-          ? "bg-white text-gray-800 shadow-md translate-y-0" 
-          : "bg-transparent text-white"
-      }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md" : "bg-transparent text-white"}`}>
 
       {/* TOP BAR */}
       <div className={`px-[12%] py-2 text-sm transition-all ${animTiming} ${
@@ -58,7 +53,6 @@ const Header = () => {
             <Phone size={15} />
             034 55 632 23
           </a>
-
         </div>
       </div>
 
@@ -72,9 +66,9 @@ const Header = () => {
         <div className="flex items-center justify-center gap-10 ml-51">
 
           {/* LEFT MENU */}
-          <div className="flex gap-8 font-medium">
-            <a href="#" className="hover:text-[#c29b7a] transition-colors duration-0">Nos destinations</a>
-            <a href="#" className="hover:text-[#c29b7a] transition-colors duration-0">Idées & inspirations</a>
+          <div className={`flex gap-8 font-medium transition-colors duration-300 ${isScrolled ? "text-gray-700" : "text-white"}`}>
+            <a href="#" className="hover:text-blue-500">Nos destinations</a>
+            <a href="#" className="hover:text-blue-500">Idées & inspirations</a>
           </div>
 
           {/* LOGO */}
@@ -95,9 +89,9 @@ const Header = () => {
           </div>
 
           {/* RIGHT MENU */}
-          <div className="flex items-center gap-8 font-medium">
-            <a href="#" className="hover:text-[#c29b7a] transition-colors duration-0">Nos croisières</a>
-            <a href="#" className="hover:text-[#c29b7a] ">Qui sommes-nous ?</a>
+          <div className={`flex items-center gap-8 font-medium transition-colors duration-300 ${isScrolled ? "text-gray-700" : "text-white"}`}>
+            <a href="#" className="hover:text-blue-500">Nos croisières</a>
+            <a href="#" className="hover:text-blue-500">Qui sommes-nous ?</a>
 
             <button className="bg-[#5b6fcf] px-5 py-2 rounded-md font-semibold hover:bg-[#4659b8] text-white shadow-sm transition-all duration-300">
               Concevez votre voyage
@@ -106,6 +100,14 @@ const Header = () => {
 
         </div>
       </nav>
+
+      {/* MEGA MENU — single instance, never unmounted while hovering header */}
+      {activeMenu && (
+        <MegaMenu
+          activeKey={activeMenu}
+          {...menuData[activeMenu as keyof typeof menuData]}
+        />
+      )}
 
     </header>
   );
