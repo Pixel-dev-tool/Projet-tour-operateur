@@ -1,0 +1,218 @@
+.mainWrapper {
+  margin-top: 50px;
+  padding: 10px;
+  width: 98.5%;
+}
+
+.carouselContainer {
+  position: relative;
+  margin: 15px;
+  margin-left: 10%;
+  padding: 15px;
+  width: 85%;
+  transition: 0.5s ease;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainTitle {
+  font-size: 35px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.ctaButton {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  color: white;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: rgb(115, 148, 239);
+  transition: 0.5s ease;
+}
+
+.ctaButton:hover {
+  cursor: pointer;
+  background-color: orangered;
+}
+
+.innerContainer {
+  width: 1200px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  margin-top: 15px;
+  gap: 15px;
+}
+
+.cardItem {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column-reverse;
+}
+
+.item1::before,
+.item2::before,
+.item3::before,
+.item4::before,
+.item5::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: brightness(0.5);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3s ease;
+  z-index: 1;
+}
+
+.item1::before {
+  background-image: url(./assets/david-bruyndonckx-pF6Ed5m95lc-unsplash.jpg);
+}
+.item2::before {
+  background-image: url(./assets/duminda-perera-oOVkoXRTzZ4-unsplash.jpg);
+}
+.item3::before {
+  background-image: url(./assets/guillermo-suarez-51qm58beR-I-unsplash.jpg);
+}
+.item4::before {
+  background-image: url(./assets/jacques-dillies-ITM82DCj6i8-unsplash.jpg);
+}
+.item5::before {
+  background-image: url(./assets/noah-grossenbacher-ZygR4vmR544-unsplash.jpg);
+}
+
+.item1:hover::before,
+.item2:hover::before,
+.item3:hover::before,
+.item4:hover::before,
+.item5:hover::before {
+  filter: brightness(1);
+}
+
+.navButton {
+  display: none;
+  position: absolute;
+  border: none;
+  background: none;
+  top: 90%;
+  transform: translateY(-90%);
+  height: 50px;
+  z-index: 2;
+}
+
+.prevButton {
+  left: 5px;
+}
+
+.nextButton {
+  right: 5px;
+}
+
+.arrowIcon {
+  width: 30px;
+  border-radius: 40px;
+  background-color: white;
+}
+
+.arrowIcon:hover {
+  background-color: orangered;
+}
+
+.cardContent {
+  position: relative;
+  padding: 10px;
+  z-index: 2;
+  transition: 0.5s ease;
+}
+
+.cardContent:hover {
+  transform: translateY(-20px);
+  cursor: pointer;
+}
+
+.cardTitle,
+.cardLabel {
+  position: relative;
+  color: white;
+}
+
+.idBadge {
+  font-size: 60px;
+}
+
+.cardLabel {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1462px) {
+  .carouselContainer {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1290px) {
+  .mainWrapper {
+    overflow: hidden;
+    width: 97%;
+    margin-left: 5px;
+    padding: 0px;
+    height: 650px;
+    transition: 0.5s ease;
+  }
+  .carouselContainer {
+    margin-left: 0px;
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1120px) {
+  .mainWrapper {
+    margin-right: 25px;
+  }
+  .carouselContainer {
+    width: 95%;
+  }
+  .mainTitle {
+    font-size: 35px;
+  }
+
+  .headerSection {
+    position: relative;
+    top: 20px;
+    transition: 0.5s ease;
+  }
+
+  .ctaButton {
+    width: 150px;
+    position: relative;
+    top: 520px;
+    transition: 0.5s ease;
+  }
+
+  .navButton {
+    display: block;
+    top: 60%;
+    transform: translateY(-60%);
+    transition: 0.5s ease;
+  }
+  .prevButton {
+    left: 20px;
+  }
+  .nextButton {
+    right: 10px;
+  }
+}
