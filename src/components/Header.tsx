@@ -24,7 +24,18 @@ const Header = () => {
     : "duration-500 ease-in-out";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md" : "bg-transparent text-white"}`}>
+    <header 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+    setIsHovered(false);
+    setActiveMenu(null);
+  }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all ${animTiming} ${
+        isActive 
+          ? "bg-white text-gray-800 shadow-md translate-y-0" 
+          : "bg-transparent text-white"
+      }`}
+    >
 
       {/* TOP BAR */}
       <div className={`px-[12%] py-2 text-sm transition-all ${animTiming} ${
@@ -66,9 +77,19 @@ const Header = () => {
         <div className="flex items-center justify-center gap-10 ml-51">
 
           {/* LEFT MENU */}
-          <div className={`flex gap-8 font-medium transition-colors duration-300 ${isScrolled ? "text-gray-700" : "text-white"}`}>
-            <a href="#" className="hover:text-blue-500">Nos destinations</a>
-            <a href="#" className="hover:text-blue-500">Idées & inspirations</a>
+          <div className="flex gap-8 font-medium">
+            <div
+              onMouseEnter={() => setActiveMenu("destinations")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+            >
+            Nos destinations
+          </div>
+            <div
+              onMouseEnter={() => setActiveMenu("inspirations")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+              >
+              Idées & inspirations
+            </div>
           </div>
 
           {/* LOGO */}
@@ -89,9 +110,19 @@ const Header = () => {
           </div>
 
           {/* RIGHT MENU */}
-          <div className={`flex items-center gap-8 font-medium transition-colors duration-300 ${isScrolled ? "text-gray-700" : "text-white"}`}>
-            <a href="#" className="hover:text-blue-500">Nos croisières</a>
-            <a href="#" className="hover:text-blue-500">Qui sommes-nous ?</a>
+          <div className="flex items-center gap-8 font-medium">
+            <div
+              onMouseEnter={() => setActiveMenu("croisieres")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+            >
+              Nos croisières
+            </div>
+            <div
+              onMouseEnter={() => setActiveMenu("about")}
+              className="hover:text-[#c29b7a] cursor-pointer"
+              >
+              Qui sommes-nous ?
+            </div>
 
             <button className="bg-[#5b6fcf] px-5 py-2 rounded-md font-semibold hover:bg-[#4659b8] text-white shadow-sm transition-all duration-300">
               Concevez votre voyage
