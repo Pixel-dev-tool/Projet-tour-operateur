@@ -34,7 +34,7 @@ const ExpertiseSection = () => {
         <div className="mt-16 text-center">
           <button
             className="
-              bg-[#4f5fa3] hover:bg-[#b9845a] text-white
+              bg-[#b9845a] hover:bg-[#4f5fa3] text-white
               font-medium text-base px-8 py-3.5 rounded-md
               transition-colors duration-300
               hover:shadow-lg hover:-translate-y-0.5
