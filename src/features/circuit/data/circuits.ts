@@ -3,6 +3,7 @@ import seville from "../../../assets/images/circuit/seville.jpg";
 import naples from "../../../assets/images/circuit/naples.jpg";
 import rome from "../../../assets/images/circuit/rome.jpg";
 
+
 export const circuits = [
   {
     id: 1,

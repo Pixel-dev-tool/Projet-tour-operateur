@@ -17,7 +17,7 @@ const HeroSection = () => {
 
       {/* 4. CONTENU CENTRAL (Héro) - Parfaitement adapté Madagascar */}
       <div className="relative z-20 flex flex-col items-center justify-center h-full -translate-y-20 px-6 text-center w-full">
-        <p className="text-[14px] text-white font-light tracking-[0.12em] mb-3 opacity-95 uppercase mt-12 md:mt-16">Agence de voyage sur mesure à Madagascar</p>
+        <p className="text-[14px] text-white font-light tracking-[0.12em] mb-3 opacity-95 uppercase mt-12 md:mt-16">Explorer Madagascar autrement</p>
 
         <h1 className="text-[52px] text-white md:text-[62px] font-['Playfair_Display'] italic mb-10 leading-[1.15] w-full max-w-[800px] mx-auto">
           Faisons le <span className="font-black not-italic text-[#f8f9ff]">voyage</span> ensemble
