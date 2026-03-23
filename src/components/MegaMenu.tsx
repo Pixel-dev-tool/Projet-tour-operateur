@@ -19,7 +19,7 @@ export default function MegaMenu({
 }: MegaMenuProps) {
   return (
     <div
-      className="absolute left-0 top-full w-full bg-white shadow-lg py-10 z-40"
+      className="absolute left-0 top-full w-full bg-white  py-10 z-40 border-t border-gray-200"
       style={{ animation: "megaFadeIn 150ms ease-out both" }}
     >
       <style>{`@keyframes megaFadeIn { from { opacity: 0 } to { opacity: 1 } }`}</style>
