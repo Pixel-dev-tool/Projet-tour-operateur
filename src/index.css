@@ -9,3 +9,12 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.mega-menu-fade-in {
+  animation: megaFadeIn 150ms ease-out both;
+}
+
+@keyframes megaFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
